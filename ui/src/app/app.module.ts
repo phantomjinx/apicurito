@@ -23,13 +23,14 @@ import {AppComponent} from './app.component';
 import {BsDropdownModule, ModalModule} from 'ngx-bootstrap';
 import {FormsModule} from '@angular/forms';
 import {WindowRef} from './services/window-ref.service';
-import {NavHeaderComponent} from "./nav/nav-header.component";
 import {EmptyStateComponent} from "./empty/empty-state.component";
 import {EditorComponent} from "./editor/editor.component";
 import {DownloaderService} from "./services/downloader.service";
 import {HttpClientModule} from "@angular/common/http";
-import { AppInfoService } from './services/app-info.service';
-import { ConfigService } from './services/config.service';
+import {AppInfoService} from './services/app-info.service';
+import {ConfigService} from './services/config.service';
+import {StorageService} from "./services/storage.service";
+import {ConfigureValidationComponent} from "./editor/configure-validation.dialog";
 
 @NgModule({
     imports: [
@@ -43,11 +44,11 @@ import { ConfigService } from './services/config.service';
     ],
     declarations: [
         AppComponent, 
-        NavHeaderComponent, 
-        EmptyStateComponent, 
-        EditorComponent
+        EmptyStateComponent,
+        EditorComponent,
+        ConfigureValidationComponent
     ],
-    providers: [WindowRef, AppInfoService, ConfigService, DownloaderService],
+    providers: [WindowRef, AppInfoService, ConfigService, DownloaderService, StorageService],
     bootstrap: [AppComponent]
 })
 export class AppModule {
