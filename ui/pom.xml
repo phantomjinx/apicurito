@@ -228,6 +228,7 @@
                                 <phase>generate-resources</phase>
                                 <configuration>
                                     <arguments>build</arguments>
+                                    <yarnInheritsProxyConfigFromMaven>false</yarnInheritsProxyConfigFromMaven>
                                 </configuration>
                             </execution>
                         </executions>
