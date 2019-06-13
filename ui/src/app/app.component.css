@@ -7,6 +7,12 @@
   position: relative;
 }
 
-.pf-c-page .pf-c-page__header {
-  background-color: #151515;
+.pf-c-about-modal-box__hero {
+  background-image: url("/assets/RedHat_about_BG.svg");
+  background-size: auto;
+}
+
+.pf-c-page__header-brand-link > img {
+  height: 40px;
+  width: 205px;
 }
