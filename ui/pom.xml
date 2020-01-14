@@ -4,7 +4,7 @@
     <parent>
         <groupId>io.apicurio</groupId>
         <artifactId>apicurito</artifactId>
-        <version>1.0.1</version>
+	<version>1.2.3-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     <artifactId>apicurito-ui</artifactId>
@@ -313,6 +313,9 @@
                                             </inline>
                                         </assembly>
                                         <dockerFile>${basedir}/docker/Dockerfile</dockerFile>
+                                        <tags combine.children="append">
+                                            <tag>latest</tag>
+                                        </tags>
                                     </build>
                                 </image>
                             </images>

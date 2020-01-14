@@ -401,9 +401,10 @@
   version "7946.0.4"
   resolved "https://registry.yarnpkg.com/@types/geojson/-/geojson-7946.0.4.tgz#4e049756383c3f055dd8f3d24e63fb543e98eb07"
 
-"@types/marked@0.6.0":
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/@types/marked/-/marked-0.6.0.tgz#e4ac316144a84afda5c2474488d7b9fef3ab9995"
+"@types/marked@0.7.0":
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/@types/marked/-/marked-0.7.0.tgz#b9de675412d26515b069ad478cf43165816d1d90"
+  integrity sha512-UcrlF5NyA7DwckjJeE7xUfEB83i4a3KsS+dH7/gqWKJnTnUOW0W0eL52EhtB6+nKw9LTX/IS5nsK3wDhjZ1GAA==
 
 "@types/node@*":
   version "11.11.3"
@@ -692,9 +693,17 @@ anymatch@^2.0.0:
     micromatch "^3.1.4"
     normalize-path "^2.1.1"
 
-apicurio-design-studio@0.2.27:
-  version "0.2.27"
-  resolved "https://registry.yarnpkg.com/apicurio-design-studio/-/apicurio-design-studio-0.2.27.tgz#35fc234cbf8e9973e0a2a4157158801ec60545ef"
+apicurio-data-models@1.0.17:
+  version "1.0.17"
+  resolved "https://registry.yarnpkg.com/apicurio-data-models/-/apicurio-data-models-1.0.17.tgz#78a941ddf79bcee74c50abc5329d4d51bbc77265"
+  integrity sha512-sC7V7lvjrTbNJcqbo745tzWq/JMGwTJMVMb9JHfbxzghVr52Uu1Q37T5zt3yWEcINbKYWxUVbCkk/sUc89V5fA==
+  dependencies:
+    core-js "3.4.1"
+
+apicurio-design-studio@0.2.44:
+  version "0.2.44"
+  resolved "https://registry.yarnpkg.com/apicurio-design-studio/-/apicurio-design-studio-0.2.44.tgz#41ca43a799cb8465710c49a4c062527c48d09c7a"
+  integrity sha512-s4XwLz+TUXjf2jjvGK8aWrTVErGSoaTNFgMcvVw5xlAoHDF82H83NyhDvlMD8s5ljeb1+kraUNSixH6/vdbw2Q==
   dependencies:
     tslib "^1.9.0"
 
@@ -1560,9 +1569,10 @@ core-js@2.6.5:
   version "2.6.5"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.5.tgz#44bc8d249e7fb2ff5d00e0341a7ffb94fbf67895"
 
-core-js@2.6.6:
-  version "2.6.6"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.6.tgz#00eb6d6bf815471cc16d8563edd7d38786dec50b"
+core-js@3.4.1:
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.4.1.tgz#76dd6828412900ab27c8ce0b22e6114d7ce21b18"
+  integrity sha512-KX/dnuY/J8FtEwbnrzmAjUYgLqtk+cxM86hfG60LGiW3MmltIc2yAmDgBgEkfm0blZhUrdr1Zd84J2Y14mLxzg==
 
 core-js@^2.4.0:
   version "2.5.7"
@@ -3462,9 +3472,10 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
-marked@0.6.0:
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/marked/-/marked-0.6.0.tgz#a18d01cfdcf8d15c3c455b71c8329e5e0f01faa1"
+marked@0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/marked/-/marked-0.7.0.tgz#b64201f051d271b1edc10a04d1ae9b74bb8e5c0e"
+  integrity sha512-c+yYdCZJQrsRjTPhUx7VKkApw9bwDkNbHUKo1ovgcfDjb2kc8rLuRbIFyXL5WOEUwzSSKo3IXpph2K6DqB/KZg==
 
 md5.js@^1.3.4:
   version "1.3.4"
@@ -4006,19 +4017,6 @@ num2fraction@^1.2.2:
 number-is-nan@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
-
-oai-ts-commands@0.2.67:
-  version "0.2.67"
-  resolved "https://registry.yarnpkg.com/oai-ts-commands/-/oai-ts-commands-0.2.67.tgz#eb769a89fbb3bb9c0aa9327dc6675ee285552107"
-  dependencies:
-    core-js "2.6.6"
-    oai-ts-core "0.2.38"
-
-oai-ts-core@0.2.38:
-  version "0.2.38"
-  resolved "https://registry.yarnpkg.com/oai-ts-core/-/oai-ts-core-0.2.38.tgz#e6848cb1cfc8fbc2bb29be87ca544947c392e167"
-  dependencies:
-    core-js "2.6.5"
 
 oauth-sign@~0.9.0:
   version "0.9.0"
