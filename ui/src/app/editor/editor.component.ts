@@ -21,13 +21,19 @@ import {DownloaderService} from "../services/downloader.service";
 import {ConfigService, GeneratorConfig} from "../services/config.service";
 import * as YAML from 'js-yaml';
 import {StorageService} from "../services/storage.service";
-import {IOasValidationSeverityRegistry, OasValidationProblemSeverity, ValidationRuleMetaData} from "oai-ts-core";
+import {
+    IValidationSeverityRegistry,
+    Library,
+    Oas20Document,
+    Oas30Document,
+    ValidationProblemSeverity
+} from "apicurio-data-models";
 
 
-export class DisableValidationRegistry implements IOasValidationSeverityRegistry {
+export class DisableValidationRegistry implements IValidationSeverityRegistry {
 
-    public lookupSeverity(rule: ValidationRuleMetaData): OasValidationProblemSeverity {
-        return OasValidationProblemSeverity.ignore;
+    public lookupSeverity(): ValidationProblemSeverity {
+        return ValidationProblemSeverity.high;
     }
 
 }
@@ -41,16 +47,7 @@ export class DisableValidationRegistry implements IOasValidationSeverityRegistry
 })
 export class EditorComponent {
 
-    private _api: ApiDefinition;
-    private _originalContent: any;
-    @Input()
-    set api(apiDef: ApiDefinition) {
-        this._api = apiDef;
-        this._originalContent = apiDef.spec;
-    }
-    get api(): ApiDefinition {
-        return this._api;
-    }
+    @Input() api: ApiDefinition;
 
     @Output() onClose: EventEmitter<void> = new EventEmitter<void>();
 
@@ -64,7 +61,9 @@ export class EditorComponent {
 
     persistenceTimeout: number;
 
-    validation: IOasValidationSeverityRegistry = null;
+    validation: IValidationSeverityRegistry = null;
+
+    converting: boolean = false;
 
     /**
      * Constructor.
@@ -88,6 +87,37 @@ export class EditorComponent {
             this.storage.store(this.apiEditor.getValue());
             this.persistenceTimeout = null;
         }, 5000);
+    }
+
+    /**
+     * Called to convert from OpenAPI 2 to 3.
+     */
+    public convert(): void {
+        this.converting = true;
+
+        const me: EditorComponent = this;
+        let currentApi: ApiDefinition = me.apiEditor.getValue();
+
+        // Do this work in a timer to workaround this bug:  https://github.com/Apicurio/apicurio-studio/issues/1031
+        // Once that bug is fixed, we can remove this workaround.
+        setTimeout(() => {
+            console.debug("[EditorComponent] Converting from OpenAPI 2 to 3!");
+            let doc20: Oas20Document = <Oas20Document> Library.readDocument(currentApi.spec);
+            let doc30: Oas30Document = Library.transformDocument(doc20);
+
+            let api30: ApiDefinition = new ApiDefinition();
+            api30.spec = Library.writeNode(doc30);
+            api30.type = "OpenAPI30";
+            api30.name = currentApi.name;
+            api30.createdBy = currentApi.createdBy;
+            api30.createdOn = currentApi.createdOn;
+            api30.description = currentApi.description;
+            api30.id = currentApi.id;
+            api30.tags = currentApi.tags;
+
+            me.api = api30;
+            me.converting = false;
+        }, 500);
     }
 
     public save(format: string = "json"): Promise<boolean> {
@@ -179,6 +209,11 @@ export class EditorComponent {
         } else {
             this.validation = new DisableValidationRegistry();
         }
+    }
+
+    public isOpenAPI2(): boolean {
+        console.info(this.api.type);
+        return this.api.type == "OpenAPI20";
     }
 
 }
